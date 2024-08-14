@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 8933903120545974814}
   - component: {fileID: 4327872350751304471}
   m_Layer: 6
-  m_Name: IdolTest
+  m_Name: Iori
   m_TagString: PlayerIdol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

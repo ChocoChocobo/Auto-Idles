@@ -41,7 +41,7 @@ public class IdolBase : MonoBehaviour
 
     private void HandleStates()
     {
-        Debug.LogWarning($"Current state: {currentState}");
+        //Debug.LogWarning($"Current state: {currentState}");
         switch (currentState)
         {
             case IdolState.Idle:

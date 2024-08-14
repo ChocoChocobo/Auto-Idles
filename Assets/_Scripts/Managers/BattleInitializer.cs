@@ -8,9 +8,6 @@ using UnityEngine;
 /// </summary>
 public class BattleInitializer : MonoBehaviour
 {
-    // TODO: MAKE A RESOURCES MANAGeR THAT WOULD STORE ALL THE IDOLS
-    [SerializeField] private ScriptableIdolBase[] scriptableIdol;
-    [SerializeField] private IdolBase[] idolBase;
     [SerializeField] private Transform[] spawnPoints;
 
     private void Start()
@@ -21,22 +18,17 @@ public class BattleInitializer : MonoBehaviour
     private void SpawnCharacters()
     {
         // Haruka test spawn as players idol
-        var spawned = Instantiate(scriptableIdol[0].prefab, spawnPoints[0].position, Quaternion.identity, spawnPoints[0]);
+        var harukaScriptable = ResourceSystem.Instance.GetIdolByName("Haruka");
+        var spawned = Instantiate(harukaScriptable.prefab, spawnPoints[0].position, Quaternion.identity, spawnPoints[0]);
         spawned.name = "Haruka";
-        var stats = scriptableIdol[0].BaseStats;
+        var stats = harukaScriptable.BaseStats;
         spawned.SetStats(stats);
 
         // Iori test spawn as enemy
-        var spawned1 = Instantiate(scriptableIdol[1].prefab, spawnPoints[1].position, Quaternion.identity, spawnPoints[1]);
+        var ioriScriptable = ResourceSystem.Instance.GetIdolByName("Iori");
+        var spawned1 = Instantiate(ioriScriptable.prefab, spawnPoints[1].position, Quaternion.identity, spawnPoints[1]);
         spawned1.name = "Iori";
-        var stats1 = scriptableIdol[1].BaseStats;
+        var stats1 = ioriScriptable.BaseStats;
         spawned1.SetStats(stats1);
-
-        /*foreach (Transform spawns in spawnPoints)
-        {
-            var spawned = Instantiate(scriptableIdol.prefab, spawns.position, Quaternion.identity, spawns);
-            var stats = scriptableIdol.BaseStats;
-            spawned.SetStats(stats);
-        }*/
     }
 }
