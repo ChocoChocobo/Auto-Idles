@@ -53,9 +53,9 @@ public class IdolBase : MonoBehaviour
             case IdolState.Attack:
                 AttackTarget();
                 break;
-            case IdolState.SpecialAttack:
+            /*case IdolState.SpecialAttack:
                 AttackTargetSpecial();
-                break;
+                break;*/
             default:
                 throw new ArgumentOutOfRangeException(nameof(currentState), currentState, "Ayo watch your state!");
         }
@@ -69,39 +69,41 @@ public class IdolBase : MonoBehaviour
         Transform closestEnemyIdolPosition = null;
         float closestDistance = Mathf.Infinity;
         
-        switch (gameObject.tag)
+        if (targetTransform == null)
         {
-            case "EnemyIdol":
-                foreach (GameObject playerIdol in playerIdols)
-                {
-
-                    float distance = Vector2.Distance(transform.position, playerIdol.transform.position);
-                    //Debug.Log($"Distance is: {distance}");
-                    if (distance < closestDistance)
+            switch (gameObject.tag)
+            {
+                case "EnemyIdol":
+                    foreach (GameObject playerIdol in playerIdols)
                     {
-                        closestPlayerIdolPosition = playerIdol.transform;
-                        closestDistance = distance;
-                        targetTransform = closestPlayerIdolPosition;
-                    }
-                }
-                break;
-            case "PlayerIdol":
-                foreach (GameObject enemyIdol in enemyIdols)
-                {
 
-                    float distance = Vector2.Distance(transform.position, enemyIdol.transform.position);
-                    //Debug.Log($"Distance is: {distance}");
-                    if (distance < closestDistance)
-                    {
-                        closestEnemyIdolPosition = enemyIdol.transform;
-                        closestDistance = distance;
-                        targetTransform = closestEnemyIdolPosition;
+                        float distance = Vector2.Distance(transform.position, playerIdol.transform.position);
+                        //Debug.Log($"Distance is: {distance}");
+                        if (distance < closestDistance)
+                        {
+                            closestPlayerIdolPosition = playerIdol.transform;
+                            closestDistance = distance;
+                            targetTransform = closestPlayerIdolPosition;
+                        }
                     }
-                }
-                break;
+                    break;
+                case "PlayerIdol":
+                    foreach (GameObject enemyIdol in enemyIdols)
+                    {
+
+                        float distance = Vector2.Distance(transform.position, enemyIdol.transform.position);
+                        //Debug.Log($"Distance is: {distance}");
+                        if (distance < closestDistance)
+                        {
+                            closestEnemyIdolPosition = enemyIdol.transform;
+                            closestDistance = distance;
+                            targetTransform = closestEnemyIdolPosition;
+                        }
+                    }
+                    break;
+            }
         }
-
-        if (targetTransform != null)
+        else
         {
             Debug.Log($"Target found: {targetTransform.name}. Distance to the target is: {closestDistance}");
             currentState = IdolState.Move;
@@ -145,24 +147,24 @@ public class IdolBase : MonoBehaviour
 
             if (specialAttackTimer <= 0)
             {
-                currentState = IdolState.SpecialAttack;
+                AttackTargetSpecial();
             }
         }
     }
 
     private void AttackTargetSpecial()
     {
-        if (targetTransform == null)
+        /*if (targetTransform == null)
         {
             currentState = IdolState.Idle;
             return;
-        }
+        }*/
 
         targetTransform.GetComponent<IdolBase>().TakeDamage(stats.attackPower * 2); // TEST CHANGE LATER!
         Debug.Log($"Enemy attacked special: {targetTransform.gameObject.name}");
         specialAttackTimer = stats.specialAttackCooldown;
 
-        currentState = IdolState.Idle;
+        /*currentState = IdolState.Idle;*/
     }
 
     private void TakeDamage(float damage)
