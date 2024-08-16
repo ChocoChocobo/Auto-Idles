@@ -41,24 +41,27 @@ public class IdolBase : MonoBehaviour
 
     private void HandleStates()
     {
-        //Debug.LogWarning($"Current state: {currentState}");
-        switch (currentState)
+        if (BattleInitializer.Instance.battleStarted)
         {
-            case IdolState.Idle:
-                FindTarget();
-                break;
-            case IdolState.Move:
-                MoveToTarget();
-                break;
-            case IdolState.Attack:
-                AttackTarget();
-                break;
-            /*case IdolState.SpecialAttack:
-                AttackTargetSpecial();
-                break;*/
-            default:
-                throw new ArgumentOutOfRangeException(nameof(currentState), currentState, "Ayo watch your state!");
-        }
+            //Debug.LogWarning($"Current state: {currentState}");
+            switch (currentState)
+            {
+                case IdolState.Idle:
+                    FindTarget();
+                    break;
+                case IdolState.Move:
+                    MoveToTarget();
+                    break;
+                case IdolState.Attack:
+                    AttackTarget();
+                    break;
+                /*case IdolState.SpecialAttack:
+                    AttackTargetSpecial();
+                    break;*/
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(currentState), currentState, "Ayo watch your state!");
+            }
+        }        
     }
 
     private void FindTarget()
@@ -154,17 +157,9 @@ public class IdolBase : MonoBehaviour
 
     private void AttackTargetSpecial()
     {
-        /*if (targetTransform == null)
-        {
-            currentState = IdolState.Idle;
-            return;
-        }*/
-
         targetTransform.GetComponent<IdolBase>().TakeDamage(stats.attackPower * 2); // TEST CHANGE LATER!
         Debug.Log($"Enemy attacked special: {targetTransform.gameObject.name}");
         specialAttackTimer = stats.specialAttackCooldown;
-
-        /*currentState = IdolState.Idle;*/
     }
 
     private void TakeDamage(float damage)

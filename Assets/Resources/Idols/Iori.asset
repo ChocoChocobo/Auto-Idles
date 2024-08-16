@@ -16,7 +16,7 @@ MonoBehaviour:
     idleName: Iori
     health: 120
     attackPower: 3
-    attackRange: 2
+    attackRange: 1.2
     attackCooldown: 1
     specialAttackCooldown: 2
     moveSpeed: 2
