@@ -122,6 +122,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &29330358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 29330359}
+  m_Layer: 0
+  m_Name: EnemyGrid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &29330359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29330358}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342911710}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &45199896
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +420,8 @@ Transform:
   m_Children:
   - {fileID: 796319137}
   - {fileID: 1037193103}
+  - {fileID: 1343459372}
+  - {fileID: 29330359}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
@@ -1495,6 +1528,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220083954}
   m_CullTransparentMesh: 1
+--- !u!1 &1343459371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1343459372}
+  m_Layer: 0
+  m_Name: PlayerGrid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1343459372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343459371}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342911710}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1347829662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,6 +1752,8 @@ MonoBehaviour:
   tilePrefab: {fileID: 3329084002603612249, guid: 6392af7b7b0eb5a47907b54cfe3f4310, type: 3}
   enemyTilePrefab: {fileID: 6978488988568212109, guid: 0fc36ad738d275a4d9ee33464349b291, type: 3}
   cam: {fileID: 519420032}
+  gridPlayerParent: {fileID: 1343459372}
+  gridEnemyParent: {fileID: 29330359}
 --- !u!1 &1566875965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,6 +2053,9 @@ MonoBehaviour:
   - {fileID: 1347829663}
   - {fileID: 45199897}
   battleStarted: 0
+  gridPlayerParent: {fileID: 1343459371}
+  gridEnemyParent: {fileID: 29330358}
+  idolsAmount: 4
 --- !u!1 &2032901731
 GameObject:
   m_ObjectHideFlags: 0

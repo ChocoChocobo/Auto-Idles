@@ -21,4 +21,4 @@ MonoBehaviour:
     specialAttackCooldown: 2
     moveSpeed: 2
     isEnemy: 1
-  prefab: {fileID: 4327872350751304471, guid: 12c59a66c641c3e4ba0c9f42e7b05592, type: 3}
+  prefab: {fileID: 4327872350751304471, guid: 04f04f5e03cc37942a35eed3e92238e3, type: 3}
