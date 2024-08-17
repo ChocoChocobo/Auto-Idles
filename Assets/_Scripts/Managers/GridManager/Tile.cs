@@ -6,6 +6,8 @@ public class Tile : MonoBehaviour
 {
     [SerializeField] private GameObject highlight;
 
+    public bool isOccupied = false;
+
     public void OnMouseEnter()
     {
         highlight.SetActive(true);
@@ -14,5 +16,15 @@ public class Tile : MonoBehaviour
     public void OnMouseExit()
     {
         highlight.SetActive(false);
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        isOccupied = true;
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        isOccupied = false; 
     }
 }

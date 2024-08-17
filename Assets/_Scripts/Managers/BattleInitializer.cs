@@ -24,17 +24,24 @@ public class BattleInitializer : StaticInstance<BattleInitializer>
     }
 
     private void SpawnPlayerIdols()
-    {        
-        GameObject[] playerTiles = new GameObject[gridPlayerParent.transform.childCount];
+    {
+        Tile[] playerTiles = new Tile[gridPlayerParent.transform.childCount];
         for (int i = 0; i < playerTiles.Length; i++)
         {
-            playerTiles[i] = gridPlayerParent.transform.GetChild(i).gameObject;
+            playerTiles[i] = gridPlayerParent.transform.GetChild(i).gameObject.GetComponent<Tile>();
         }
 
         for (int i = 0; i < idolsAmount; i++)
         {
             // TODO: add a check for if a tile is occupied already. Try searching for not occupied tile
-            GameObject randomTile = playerTiles[Random.Range(1, playerTiles.Length)];
+            Tile randomTile = playerTiles[Random.Range(1, playerTiles.Length)];
+            if (randomTile.isOccupied)
+            {
+                Debug.Log("PlayerTile is occpuied, trying new");
+                i--;
+                continue;               
+            } else randomTile.isOccupied = true;
+
             // Haruka test spawn as players idol
             var harukaScriptable = ResourceSystem.Instance.GetIdolByName("Haruka");
             var spawned = Instantiate(harukaScriptable.prefab, randomTile.transform.position, Quaternion.identity, randomTile.transform);
@@ -47,15 +54,21 @@ public class BattleInitializer : StaticInstance<BattleInitializer>
 
     private void SpawnEnemyIdols() // TODO: Remake so that it fetches the active player idol roster through scenes
     {
-        GameObject[] enemyTiles = new GameObject[gridEnemyParent.transform.childCount];
+        EnemyTile[] enemyTiles = new EnemyTile[gridEnemyParent.transform.childCount];
         for (int i = 0; i < enemyTiles.Length; i++)
         {
-            enemyTiles[i] = gridEnemyParent.transform.GetChild(i).gameObject;
+            enemyTiles[i] = gridEnemyParent.transform.GetChild(i).gameObject.GetComponent<EnemyTile>();
         }
 
         for (int i = 0; i < idolsAmount; i++)
         {
-            GameObject randomTile = enemyTiles[Random.Range(1, enemyTiles.Length)];
+            EnemyTile randomTile = enemyTiles[Random.Range(1, enemyTiles.Length)];
+            if (randomTile.isOccupied)
+            {
+                Debug.Log("EnemyTile is occpuied, trying new");
+                i--;
+                continue;
+            } else randomTile.isOccupied = true;
             // Iori test spawn as enemy
             var ioriScriptable = ResourceSystem.Instance.GetIdolByName("Iori");
             var spawned = Instantiate(ioriScriptable.prefab, randomTile.transform.position, Quaternion.identity, randomTile.transform);
