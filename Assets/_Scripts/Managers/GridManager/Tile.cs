@@ -8,23 +8,37 @@ public class Tile : MonoBehaviour
 
     public bool isOccupied = false;
 
-    public void OnMouseEnter()
+    private int playerIdolLayer = 7;
+
+    /*public void OnMouseEnter()
     {
         highlight.SetActive(true);
     }
 
     public void OnMouseExit()
     {
-        highlight.SetActive(false);
-    }
+        
+    }*/
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        isOccupied = true;
+        if (other.gameObject.layer == playerIdolLayer)
+        {
+            highlight.SetActive(true);
+            Debug.Log($"Tile occupied: {name}");
+            // isOccupied = true;
+        }
+        else Debug.Log($"Not an idol layer: {other.name}");       
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        isOccupied = false; 
+        if (other.gameObject.layer == playerIdolLayer)
+        {
+            highlight.SetActive(false);
+            Debug.Log($"Tile not occupied: {name}");
+            //isOccupied = false;
+        }
+        else Debug.Log($"Not an idol layer: {other.name}");               
     }
 }
