@@ -33,31 +33,25 @@ public class IdolDragAndDrop : MonoBehaviour
     {
         isDragging = false;
 
-        if (currentTile != null/* && !currentTile.isOccupied*/)
+        if (currentTile != null && !currentTile.isOccupied)
         {
             transform.position = currentTile.transform.position;
             currentTile.isOccupied = true;
         }
         else
         {
-            Debug.LogWarning($"Current tile: {currentTile.name}");
             transform.position = initialPosition;
         }
-        // TODO: snap back to the original position if no valid tile
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == tileLayer)
         {
-            Debug.Log("Hit tile");
-
             Tile tile = other.GetComponent<Tile>();
-            if (tile != null/* && !tile.isOccupied*/)
+            if (tile != null && !tile.isOccupied)
             {
-                //tile.isOccupied = true;
                 currentTile = tile;
-                
             }
         }        
     }
@@ -68,10 +62,10 @@ public class IdolDragAndDrop : MonoBehaviour
         {
             Tile tile = other.GetComponent<Tile>();
             
-            if (tile != null/* && currentTile == tile*/)
+            if (tile != null && currentTile == tile)
             {
                 tile.isOccupied = false;
-                currentTile = null;
+                //currentTile = null;
             }
         }
         
