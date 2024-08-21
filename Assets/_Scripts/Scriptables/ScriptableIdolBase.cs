@@ -12,7 +12,7 @@ public class ScriptableIdolBase : ScriptableObject
 
     public IdolBase prefab;
 
-    
+    public bool isActiveRoster = false;
 }
 
 [Serializable]

@@ -25,6 +25,11 @@ public class ResourceSystem : StaticInstance<ResourceSystem>
         Debug.Log($"idols assembled: {Idols.Count}");
     }
 
+    //                  Queries
+
+    public void AddActiveRoster(string idolName) => IdolDict[idolName].isActiveRoster = true;
+    public void RemoveActiveRoster(string idolName) => IdolDict[idolName].isActiveRoster = false;
+
     // Getting idol by name of the prefab
     public ScriptableIdolBase GetIdolByName(string idolName) => IdolDict[idolName];
 }
