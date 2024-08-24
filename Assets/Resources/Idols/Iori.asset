@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Iori
   m_EditorClassIdentifier: 
   stats:
-    idleName: Iori
+    idolName: Iori
     health: 120
     attackPower: 3
     attackRange: 1.2
@@ -21,4 +21,6 @@ MonoBehaviour:
     specialAttackCooldown: 2
     moveSpeed: 2
     isEnemy: 1
-  prefab: {fileID: 4327872350751304471, guid: 04f04f5e03cc37942a35eed3e92238e3, type: 3}
+  IdolGenres: 0
+  Prefab: {fileID: 0}
+  IsActiveRoster: 0

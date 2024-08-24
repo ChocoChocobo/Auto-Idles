@@ -20,15 +20,16 @@ public class ResourceSystem : StaticInstance<ResourceSystem>
     private void AssembleResources()
     {
         Idols = Resources.LoadAll<ScriptableIdolBase>("Idols").ToList();
-        IdolDict = Idols.ToDictionary(i => i.prefab.name, i => i);
+        IdolDict = Idols.ToDictionary(i => i.Prefab.name, i => i);
 
         Debug.Log($"idols assembled: {Idols.Count}");
     }
 
     //                  Queries
 
-    public void AddActiveRoster(string idolName) => IdolDict[idolName].isActiveRoster = true;
-    public void RemoveActiveRoster(string idolName) => IdolDict[idolName].isActiveRoster = false;
+    // Used when player is dragging them in the moroning screen from the roster and reverse
+    public void AddActiveRoster(string idolName) => IdolDict[idolName].IsActiveRoster = true;
+    public void RemoveActiveRoster(string idolName) => IdolDict[idolName].IsActiveRoster = false;
 
     // Getting idol by name of the prefab
     public ScriptableIdolBase GetIdolByName(string idolName) => IdolDict[idolName];

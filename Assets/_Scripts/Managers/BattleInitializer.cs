@@ -44,7 +44,7 @@ public class BattleInitializer : StaticInstance<BattleInitializer>
 
             // Haruka test spawn as players idol
             var harukaScriptable = ResourceSystem.Instance.GetIdolByName("Haruka");
-            var spawned = Instantiate(harukaScriptable.prefab, randomTile.transform.position, Quaternion.identity, randomTile.transform);
+            var spawned = Instantiate(harukaScriptable.Prefab, randomTile.transform.position, Quaternion.identity, randomTile.transform);
             spawned.name = "Haruka";
             var stats = harukaScriptable.BaseStats;
             spawned.SetStats(stats);
@@ -71,7 +71,7 @@ public class BattleInitializer : StaticInstance<BattleInitializer>
             } else randomTile.isOccupied = true;
             // Iori test spawn as enemy
             var ioriScriptable = ResourceSystem.Instance.GetIdolByName("Iori");
-            var spawned = Instantiate(ioriScriptable.prefab, randomTile.transform.position, Quaternion.identity, randomTile.transform);
+            var spawned = Instantiate(ioriScriptable.Prefab, randomTile.transform.position, Quaternion.identity, randomTile.transform);
             spawned.name = "Iori";
             var stats = ioriScriptable.BaseStats;
             spawned.SetStats(stats);

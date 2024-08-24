@@ -10,15 +10,17 @@ public class ScriptableIdolBase : ScriptableObject
     private Stats stats;
     public Stats BaseStats => stats;
 
-    public IdolBase prefab;
+    public IdolGenres IdolGenres;
 
-    public bool isActiveRoster = false;
+    public IdolBase Prefab;
+
+    public bool IsActiveRoster = false;
 }
 
 [Serializable]
 public struct Stats
 {
-    public string idleName;
+    public string idolName;
     public float health;
     public float attackPower;
     public float attackRange;
@@ -26,4 +28,10 @@ public struct Stats
     public float specialAttackCooldown;
     public float moveSpeed;
     public bool isEnemy;
+}
+
+public enum IdolGenres
+{
+    Metal = 0,
+    Indie = 1
 }

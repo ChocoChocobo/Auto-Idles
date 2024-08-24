@@ -25,7 +25,7 @@ public class IdolBase : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        Debug.Log($"Idol initialized: {stats.idleName}, HP: {stats.health}, AP: {stats.attackPower}, Range: {stats.attackRange}");
+        Debug.Log($"Idol initialized: {stats.idolName}, HP: {stats.health}, AP: {stats.attackPower}, Range: {stats.attackRange}");
         currentState = IdolState.Idle;
 
         if (stats.isEnemy) gameObject.tag = "EnemyIdol";
