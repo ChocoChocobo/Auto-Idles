@@ -5,9 +5,9 @@ using TMPro;
 using UnityEngine.UI;
 
 /// <summary>
-/// MorningInitializer is responsible for loading all the data at the start of the morning scene. I.e. loading all the data into HR panel.
+/// TalentsListInitializer is responsible for loading all idols data into idols list in the HR panel.
 /// </summary>
-public class MorningInitializer : StaticInstance<MorningInitializer>
+public class TalentsListInitializer : StaticInstance<TalentsListInitializer>
 {
     [SerializeField] private GameObject idolListCellPrefab;
     [SerializeField] private GameObject idolsListPanel;
@@ -29,13 +29,18 @@ public class MorningInitializer : StaticInstance<MorningInitializer>
         for (int i = 0; i < 2; i++)
         {
             GameObject idolCell = Instantiate(idolListCellPrefab, idolsListPanel.transform.position, Quaternion.identity, idolsListPanel.transform);
-            Image idolImage = idolCell.GetComponentInChildren<Image>(true); // TODO
-            TextMeshProUGUI[] idolsStats = idolCell.GetComponentsInChildren<TextMeshProUGUI>(true);
-            TextMeshProUGUI idolName = idolsStats[0];
-            TextMeshProUGUI idolGenre = idolsStats[1];
+            Image[] idolImage = idolCell.GetComponentsInChildren<Image>(true); // TODO: PLACE IDOL ACCORDING IMAGE
+            Button idolImageButton = idolCell.GetComponentInChildren<Button>(true);
+            TextMeshProUGUI[] idolStrings = idolCell.GetComponentsInChildren<TextMeshProUGUI>(true);
+            TextMeshProUGUI idolName = idolStrings[0];
+            TextMeshProUGUI idolGenre = idolStrings[1];
+
+            idolImage[1].sprite = ResourceSystem.Instance.Idols[i].IdolPFP;
 
             idolName.text = ResourceSystem.Instance.Idols[i].BaseStats.idolName;
             idolGenre.text = ResourceSystem.Instance.Idols[i].IdolGenres.ToString();
+
+            idolImageButton.onClick.AddListener(delegate { IdolBioInitializer.Instance.ShowIdolBioPanel(idolName.text); }); // When you press the idols pfp the bio panel opens up fetching the idols stats
         }
     }
 }

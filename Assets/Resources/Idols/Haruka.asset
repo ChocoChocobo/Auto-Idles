@@ -22,5 +22,8 @@ MonoBehaviour:
     moveSpeed: 2
     isEnemy: 0
   IdolGenres: 1
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 4327872350751304471, guid: 12c59a66c641c3e4ba0c9f42e7b05592, type: 3}
+  IdolPFP: {fileID: 21300000, guid: 7652a710d22fc684dbab51fc490a71b5, type: 3}
+  IdolInGameSprite: {fileID: 21300000, guid: 1e6f5065acc2c3f448cb2dde31b88a73, type: 3}
+  IsOwned: 0
   IsActiveRoster: 0

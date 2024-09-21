@@ -31,6 +31,10 @@ public class ResourceSystem : StaticInstance<ResourceSystem>
     public void AddActiveRoster(string idolName) => IdolDict[idolName].IsActiveRoster = true;
     public void RemoveActiveRoster(string idolName) => IdolDict[idolName].IsActiveRoster = false;
 
+    // Used when player is obtaining an idol from HR panel
+    public void AddOwnedIdol(string idolName) => IdolDict[idolName].IsOwned = true;
+    public void RemoveOwnedIdol(string idolName) => IdolDict[idolName].IsOwned = false;
+
     // Getting idol by name of the prefab
     public ScriptableIdolBase GetIdolByName(string idolName) => IdolDict[idolName];
 }

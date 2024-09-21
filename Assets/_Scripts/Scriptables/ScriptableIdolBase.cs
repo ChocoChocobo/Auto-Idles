@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "NewIdle")]
 public class ScriptableIdolBase : ScriptableObject
@@ -14,6 +15,10 @@ public class ScriptableIdolBase : ScriptableObject
 
     public IdolBase Prefab;
 
+    public Sprite IdolPFP;
+    public Sprite IdolInGameSprite;
+
+    public bool IsOwned = false;
     public bool IsActiveRoster = false;
 }
 
