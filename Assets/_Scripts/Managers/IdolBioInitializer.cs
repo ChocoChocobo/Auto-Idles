@@ -13,6 +13,13 @@ public class IdolBioInitializer : StaticInstance<IdolBioInitializer>
 
     [Header("Bio Panel Attachables")]
     [SerializeField] private Image idolSprite;
+    [SerializeField] private TextMeshProUGUI idolNameText;
+    [SerializeField] private TextMeshProUGUI genreType;
+    [SerializeField] private TextMeshProUGUI salaryExpectations;
+    [SerializeField] private TextMeshProUGUI stageExpreience;
+    [SerializeField] private TextMeshProUGUI stageExpectations;
+    [SerializeField] private TextMeshProUGUI idolDescription;
+    [SerializeField] private GameObject idolSkillsParent;
 
     protected override void Awake()
     {
@@ -26,5 +33,11 @@ public class IdolBioInitializer : StaticInstance<IdolBioInitializer>
         var idolScriptable = ResourceSystem.Instance.GetIdolByName(idolName);
 
         idolSprite.sprite = idolScriptable.IdolInGameSprite;
+        idolNameText.text = idolScriptable.BaseStats.idolName;
+        genreType.text = $"{idolScriptable.Bio.IdolGenre} | {idolScriptable.Bio.idolType}";
+        salaryExpectations.text = idolScriptable.Bio.salaryExpectations;
+        stageExpreience.text = idolScriptable.Bio.stageExperience;
+        stageExpectations.text = idolScriptable.Bio.stageExpectations;
+        idolDescription.text = idolScriptable.Bio.description;
     }
 }

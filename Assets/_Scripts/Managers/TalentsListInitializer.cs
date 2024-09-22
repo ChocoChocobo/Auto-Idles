@@ -38,7 +38,7 @@ public class TalentsListInitializer : StaticInstance<TalentsListInitializer>
             idolImage[1].sprite = ResourceSystem.Instance.Idols[i].IdolPFP;
 
             idolName.text = ResourceSystem.Instance.Idols[i].BaseStats.idolName;
-            idolGenre.text = ResourceSystem.Instance.Idols[i].IdolGenres.ToString();
+            idolGenre.text = ResourceSystem.Instance.Idols[i].Bio.IdolGenre.ToString();
 
             idolImageButton.onClick.AddListener(delegate { IdolBioInitializer.Instance.ShowIdolBioPanel(idolName.text); }); // When you press the idols pfp the bio panel opens up fetching the idols stats
         }

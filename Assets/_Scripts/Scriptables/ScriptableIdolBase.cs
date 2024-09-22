@@ -7,11 +7,13 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "NewIdle")]
 public class ScriptableIdolBase : ScriptableObject
 {
+    public Bio Bio;
+
     [SerializeField]
     private Stats stats;
     public Stats BaseStats => stats;
 
-    public IdolGenres IdolGenres;
+    //public IdolGenres IdolGenres;
 
     public IdolBase Prefab;
 
@@ -35,7 +37,25 @@ public struct Stats
     public bool isEnemy;
 }
 
-public enum IdolGenres
+[Serializable]
+public struct Bio
+{
+    public IdolGenre IdolGenre;
+    public IdolType idolType;
+    public string salaryExpectations;
+    public string stageExperience;
+    public string stageExpectations;
+    public string description;
+}
+
+public enum IdolType
+{
+    Singer = 0,
+    Dancer = 1,
+    Instrument = 2
+}
+
+public enum IdolGenre
 {
     Metal = 0,
     Indie = 1
