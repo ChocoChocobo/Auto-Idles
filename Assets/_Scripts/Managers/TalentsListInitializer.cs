@@ -29,7 +29,7 @@ public class TalentsListInitializer : StaticInstance<TalentsListInitializer>
         for (int i = 0; i < 2; i++)
         {
             GameObject idolCell = Instantiate(idolListCellPrefab, idolsListPanel.transform.position, Quaternion.identity, idolsListPanel.transform);
-            Image[] idolImage = idolCell.GetComponentsInChildren<Image>(true); // TODO: PLACE IDOL ACCORDING IMAGE
+            Image[] idolImage = idolCell.GetComponentsInChildren<Image>(true);
             Button idolImageButton = idolCell.GetComponentInChildren<Button>(true);
             TextMeshProUGUI[] idolStrings = idolCell.GetComponentsInChildren<TextMeshProUGUI>(true);
             TextMeshProUGUI idolName = idolStrings[0];

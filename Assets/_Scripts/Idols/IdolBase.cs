@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static AbilityHolder;
 
 /// <summary>
 /// IdolBase class is responsible for all the shared movement between idols. I.e. state machines for each idol.
@@ -16,14 +17,19 @@ public class IdolBase : MonoBehaviour
 
     private Transform targetTransform;
 
-    private float attackTimer;
+    /*private float basicAttackTimer;
     private float specialAttackTimer;
+    private float ultimateAttackTimer;*/
 
     private Rigidbody2D rb;
+
+    private AbilityHolder[] abilities;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        abilities = GetComponents<AbilityHolder>();
+        Debug.Log($"Abilities loaded: {abilities.Length}");
 
         Debug.Log($"Idol initialized: {stats.idolName}, HP: {stats.health}, AP: {stats.attackPower}, Range: {stats.attackRange}");
         currentState = IdolState.Idle;
@@ -35,8 +41,9 @@ public class IdolBase : MonoBehaviour
     {
         HandleStates();
 
-        attackTimer -= Time.deltaTime;
+       /* basicAttackTimer -= Time.deltaTime;
         specialAttackTimer -= Time.deltaTime;
+        ultimateAttackTimer -= Time.deltaTime;*/
     }
 
     private void HandleStates()
@@ -55,9 +62,6 @@ public class IdolBase : MonoBehaviour
                 case IdolState.Attack:
                     AttackTarget();
                     break;
-                /*case IdolState.SpecialAttack:
-                    AttackTargetSpecial();
-                    break;*/
                 default:
                     throw new ArgumentOutOfRangeException(nameof(currentState), currentState, "Ayo watch your state!");
             }
@@ -141,26 +145,53 @@ public class IdolBase : MonoBehaviour
             return;
         }
 
-        if (attackTimer <= 0)
+        if (abilities[1].currentState != AbilityState.active && abilities[2].currentState != AbilityState.active)
         {
-            targetTransform.GetComponent<IdolBase>().TakeDamage(stats.attackPower);
-            Debug.Log($"Enemy attacked: {targetTransform.gameObject.name}");
-            //Debug.Log($"Enemy got: {stats.health}");
-            attackTimer = stats.attackCooldown;
+            abilities[0].TriggerAbility();
 
-            if (specialAttackTimer <= 0)
+            if (abilities[0].currentState != AbilityState.active && abilities[2].currentState != AbilityState.active) abilities[1].TriggerAbility(); // special ability
+
+            if (abilities[0].currentState == AbilityState.cooldown && abilities[1].currentState == AbilityState.cooldown) abilities[2].TriggerAbility(); // ultimate ability
+        }// basic attack
+         
+        
+        
+        /*if (abilities[0].cooldownTime <= 0)
+        {
+            abilities[0].TriggerAbility();
+
+            *//*targetTransform.GetComponent<IdolBase>().TakeDamage(stats.attackPower);
+            Debug.Log($"Enemy attacked: {targetTransform.gameObject.name}");*//*
+            //Debug.Log($"Enemy got: {stats.health}");
+            //attackTimer = stats.attackCooldown; // REPLACE FROM ABILITY
+
+            if (abilities[0].currentState == AbilityState.cooldown)
             {
                 AttackTargetSpecial();
             }
-        }
+
+            if (ultimateAttackTimer <= 0)
+            {
+                AttackTargetUltimate();
+            }
+        }*/
     }
 
-    private void AttackTargetSpecial()
+    /*private void AttackTargetSpecial()
     {
-        targetTransform.GetComponent<IdolBase>().TakeDamage(stats.attackPower * 2); // TEST CHANGE LATER!
-        Debug.Log($"Enemy attacked special: {targetTransform.gameObject.name}");
-        specialAttackTimer = stats.specialAttackCooldown;
+
+
+        *//*targetTransform.GetComponent<IdolBase>().TakeDamage(stats.attackPower * 2); // TEST CHANGE LATER!
+        Debug.Log($"Enemy attacked special: {targetTransform.gameObject.name}");*//*
+        specialAttackTimer = stats.specialAttackCooldown; // REPLACE FROM ABILITY
     }
+
+    private void AttackTargetUltimate()
+    {
+        *//*targetTransform.GetComponent<IdolBase>().TakeDamage(stats.attackPower * 3); // TEST CHANGE LATER!
+        Debug.Log($"Enemy attacked special: {targetTransform.gameObject.name}");*//*
+        ultimateAttackTimer = 
+    }*/
 
     private void TakeDamage(float damage)
     {
@@ -185,7 +216,6 @@ public class IdolBase : MonoBehaviour
         Idle,
         Move,
         Attack,
-        SpecialAttack
     }
 
 

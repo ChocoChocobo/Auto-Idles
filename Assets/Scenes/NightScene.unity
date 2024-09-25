@@ -1966,7 +1966,7 @@ MonoBehaviour:
   battleStarted: 0
   gridPlayerParent: {fileID: 1343459371}
   gridEnemyParent: {fileID: 29330358}
-  idolsAmount: 4
+  idolsAmount: 1
 --- !u!1 &2032901731
 GameObject:
   m_ObjectHideFlags: 0

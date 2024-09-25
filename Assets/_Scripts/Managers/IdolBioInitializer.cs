@@ -9,6 +9,7 @@ using UnityEngine.UI;
 /// </summary>
 public class IdolBioInitializer : StaticInstance<IdolBioInitializer>
 {
+    [Header("Bio Panel Parent")]
     [SerializeField] private GameObject idolBioPanel;
 
     [Header("Bio Panel Attachables")]

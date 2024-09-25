@@ -97,6 +97,9 @@ GameObject:
   - component: {fileID: 8933903120545974814}
   - component: {fileID: 4327872350751304471}
   - component: {fileID: -2985982860346390572}
+  - component: {fileID: 1277886156116779414}
+  - component: {fileID: 2952064451419046878}
+  - component: {fileID: -4048213545040187366}
   m_Layer: 9
   m_Name: Iori
   m_TagString: PlayerIdol
@@ -216,6 +219,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55895fecd8f210349ba48543c87ead0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileLayer:
-    serializedVersion: 2
-    m_Bits: 64
+--- !u!114 &1277886156116779414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437505189534800219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e158526bf7bbd946a2699d3f818f5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 62a01ce49d4684f4eb1153225ec15222, type: 2}
+  cooldownTime: 0
+  currentState: 0
+--- !u!114 &2952064451419046878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437505189534800219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e158526bf7bbd946a2699d3f818f5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: a90af7daec5f6024088ab22163b8ac39, type: 2}
+  cooldownTime: 0
+  currentState: 0
+--- !u!114 &-4048213545040187366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437505189534800219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e158526bf7bbd946a2699d3f818f5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: cbd6b960e6669bd478fa356aa7b4dd62, type: 2}
+  cooldownTime: 0
+  currentState: 0

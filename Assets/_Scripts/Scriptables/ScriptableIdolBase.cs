@@ -13,7 +13,7 @@ public class ScriptableIdolBase : ScriptableObject
     private Stats stats;
     public Stats BaseStats => stats;
 
-    //public IdolGenres IdolGenres;
+    //public AbilityHolder[] Abilities;
 
     public IdolBase Prefab;
 
@@ -31,8 +31,8 @@ public struct Stats
     public float health;
     public float attackPower;
     public float attackRange;
-    public float attackCooldown;
-    public float specialAttackCooldown;
+    //public float attackCooldown;
+    //public float specialAttackCooldown;
     public float moveSpeed;
     public bool isEnemy;
 }
