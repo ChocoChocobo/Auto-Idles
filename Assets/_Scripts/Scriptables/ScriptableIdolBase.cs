@@ -29,7 +29,7 @@ public struct Stats
 {
     public string idolName;
     public float health;
-    public float attackPower;
+    public int attackPower;
     public float attackRange;
     //public float attackCooldown;
     //public float specialAttackCooldown;

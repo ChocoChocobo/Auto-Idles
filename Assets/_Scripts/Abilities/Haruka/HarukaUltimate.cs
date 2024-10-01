@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu]
 public class HarukaUltimate : Ability
 {
-    public override void Activate()
+    public override void Activate(Transform targetTransform, int amount)
     {
-        Debug.Log("Haruka ultimate attack activated!");
+        Debug.Log($"Haruka ultimate attack activated for {amount}!");
     }
 }

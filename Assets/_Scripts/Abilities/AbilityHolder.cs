@@ -13,6 +13,15 @@ public class AbilityHolder : MonoBehaviour
 
     public AbilityState currentState = AbilityState.ready;
 
+    private Stats stats;
+    public Transform targetTransform;
+
+    private void Start()
+    {
+        stats = GetComponent<IdolBase>().stats;
+        targetTransform = GetComponent<IdolBase>().targetTransform;
+    }
+
     private void Update()
     {
         activeTime -= Time.deltaTime;
@@ -23,7 +32,7 @@ public class AbilityHolder : MonoBehaviour
             case AbilityState.ready:
                 if (isStarted)
                 {
-                    ability.Activate();
+                    ability.Activate(targetTransform, stats.attackPower);
                     currentState = AbilityState.active;
                     activeTime = ability.activeTime;
                 }

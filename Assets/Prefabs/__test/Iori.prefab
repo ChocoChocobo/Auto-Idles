@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 1304184952948310039}
   - component: {fileID: 8933903120545974814}
   - component: {fileID: 4327872350751304471}
+  - component: {fileID: 5374607322376755151}
   - component: {fileID: -2985982860346390572}
   - component: {fileID: 1277886156116779414}
   - component: {fileID: 2952064451419046878}
@@ -205,6 +206,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da56b7483804ab1489d8169798c2c9ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    idolName: 
+    health: 0
+    attackPower: 0
+    attackRange: 0
+    moveSpeed: 0
+    isEnemy: 0
+  targetTransform: {fileID: 0}
+--- !u!114 &5374607322376755151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437505189534800219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7dd8644a7fd7149ae380d8fd16885b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &-2985982860346390572

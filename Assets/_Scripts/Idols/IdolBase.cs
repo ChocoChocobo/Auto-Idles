@@ -10,12 +10,12 @@ using static AbilityHolder;
 /// </summary>
 public class IdolBase : MonoBehaviour
 {
-    private Stats stats;
+    public Stats stats;
     public virtual void SetStats(Stats stats) => this.stats = stats;
 
     private IdolState currentState;
 
-    private Transform targetTransform;
+    public Transform targetTransform;
 
     /*private float basicAttackTimer;
     private float specialAttackTimer;

@@ -5,8 +5,9 @@ using UnityEngine;
 [CreateAssetMenu]
 public class IoriBasic : Ability
 {
-    public override void Activate()
+    public override void Activate(Transform targetTransform, int amount)
     {
-        Debug.Log("Iori basic attack activated!");
+        targetTransform.GetComponent<IdolHealth>().TakeDamage(amount);
+        Debug.Log($"Iori basic attack activated for {amount}!");
     }
 }

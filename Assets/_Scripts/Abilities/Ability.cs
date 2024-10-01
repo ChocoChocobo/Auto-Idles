@@ -13,5 +13,5 @@ public class Ability : ScriptableObject
     public float cooldownTime;
     public float activeTime;
 
-    public virtual void Activate() { }
+    public virtual void Activate(Transform targetTransform, int amount) { }
 }

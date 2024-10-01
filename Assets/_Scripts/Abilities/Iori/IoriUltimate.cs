@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu]
 public class IoriUltimate : Ability
 {
-    public override void Activate()
+    public override void Activate(Transform targetTransform, int amount)
     {
-        Debug.Log("Iori ultimate attack activated!");
+        Debug.Log($"Iori ultimate attack activated for {amount}!");
     }
 }
