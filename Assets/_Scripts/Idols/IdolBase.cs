@@ -91,6 +91,10 @@ public class IdolBase : MonoBehaviour
                             closestPlayerIdolPosition = playerIdol.transform;
                             closestDistance = distance;
                             targetTransform = closestPlayerIdolPosition;
+                            foreach (var ability in abilities)
+                            {
+                                ability.targetIdol = targetTransform.gameObject;
+                            }
                         }
                     }
                     break;
@@ -105,6 +109,10 @@ public class IdolBase : MonoBehaviour
                             closestEnemyIdolPosition = enemyIdol.transform;
                             closestDistance = distance;
                             targetTransform = closestEnemyIdolPosition;
+                            foreach (var ability in abilities)
+                            {
+                                ability.targetIdol = targetTransform.gameObject;
+                            }
                         }
                     }
                     break;

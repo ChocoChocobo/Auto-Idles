@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class IoriSpecial : Ability
 {
-    public override void Activate(Transform targetTransform, int amount)
+    public override void Activate(GameObject targetIdol, int amount)
     {
         Debug.Log($"Iori special attack activated for {amount}!");
     }

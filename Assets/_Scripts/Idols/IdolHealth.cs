@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class IdolHealth : MonoBehaviour
 {
-    private Slider healthBar;
+    //private Slider healthBar;
 
     private float health;
     private float maxHealth;
@@ -32,7 +32,7 @@ public class IdolHealth : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
-        healthBar.value = health;
+        //healthBar.value = health;
         Debug.LogWarning($"{gameObject.name} health is {health}");
         if (health <= 0) Debug.LogWarning($"{gameObject.name} is down!");
         if (health < 0) health = 0;
@@ -42,7 +42,7 @@ public class IdolHealth : MonoBehaviour
     {
         health += healAmount;
         if (health > maxHealth) health = maxHealth;
-        healthBar.value = health;
+        //healthBar.value = health;
     }
 
     // TakeBlock()

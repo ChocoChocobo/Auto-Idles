@@ -14,16 +14,19 @@ public class AbilityHolder : MonoBehaviour
     public AbilityState currentState = AbilityState.ready;
 
     private Stats stats;
-    public Transform targetTransform;
+
+    public GameObject targetIdol;
 
     private void Start()
     {
         stats = GetComponent<IdolBase>().stats;
-        targetTransform = GetComponent<IdolBase>().targetTransform;
+        
     }
 
     private void Update()
     {
+        //targetIdol = GetComponent<IdolBase>().targetTransform.gameObject;
+
         activeTime -= Time.deltaTime;
         cooldownTime -= Time.deltaTime;
 
@@ -32,7 +35,7 @@ public class AbilityHolder : MonoBehaviour
             case AbilityState.ready:
                 if (isStarted)
                 {
-                    ability.Activate(targetTransform, stats.attackPower);
+                    ability.Activate(targetIdol, stats.attackPower);
                     currentState = AbilityState.active;
                     activeTime = ability.activeTime;
                 }
