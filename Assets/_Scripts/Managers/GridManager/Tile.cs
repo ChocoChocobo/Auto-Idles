@@ -12,7 +12,7 @@ public class Tile : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == playerIdolLayer)
+        if (other.gameObject.layer == playerIdolLayer && !BattleInitializer.Instance.battleStarted)
         {
             highlight.SetActive(true);
         }      
