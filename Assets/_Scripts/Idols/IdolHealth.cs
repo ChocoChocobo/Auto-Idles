@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// IdolHealth class is responsible for managing idol`s health and its functions, i.e. heal, block, take damage.
+/// </summary>
 public class IdolHealth : MonoBehaviour
 {
     //private Slider healthBar;

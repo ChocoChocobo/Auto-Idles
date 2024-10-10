@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// TimerManager class is responsible for timer logic at Night scene.
+/// </summary>
 public class TimerManager : StaticInstance<TimerManager>
 {
     [SerializeField] private TextMeshProUGUI timerText;

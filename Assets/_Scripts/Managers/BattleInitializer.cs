@@ -33,7 +33,6 @@ public class BattleInitializer : StaticInstance<BattleInitializer>
 
         for (int i = 0; i < idolsAmount; i++)
         {
-            // TODO: add a check for if a tile is occupied already. Try searching for not occupied tile
             Tile randomTile = playerTiles[Random.Range(1, playerTiles.Length)];
             if (randomTile.isOccupied)
             {

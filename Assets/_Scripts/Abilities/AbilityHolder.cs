@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// AbilityHolder class is a class responsible for storing an ability and its usage.
+/// </summary>
 public class AbilityHolder : MonoBehaviour
 {
     public Ability ability;
@@ -25,8 +28,6 @@ public class AbilityHolder : MonoBehaviour
 
     private void Update()
     {
-        //targetIdol = GetComponent<IdolBase>().targetTransform.gameObject;
-
         activeTime -= Time.deltaTime;
         cooldownTime -= Time.deltaTime;
 
@@ -47,23 +48,11 @@ public class AbilityHolder : MonoBehaviour
                     currentState = AbilityState.cooldown;
                     cooldownTime = ability.cooldownTime;
                     isStarted = false;
-                }
-                /*if (activeTime > 0)
-                { 
-                    activeTime -= Time.deltaTime; 
-                }
-                else
-                {
-                    currentState = AbilityState.cooldown;
-                    cooldownTime = ability.cooldownTime;
-                    isStarted = false;
-                }*/
+                }             
 
                 break;
             case AbilityState.cooldown:
-                if (cooldownTime <= 0) currentState = AbilityState.ready;
-                /*if (cooldownTime > 0) cooldownTime -= Time.deltaTime;
-                else currentState = AbilityState.ready;*/
+                if (cooldownTime <= 0) currentState = AbilityState.ready;                
 
                 break;
             default:

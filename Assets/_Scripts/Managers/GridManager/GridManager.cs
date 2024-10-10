@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// GridManager class is responsible for generating grids for units at Night scene.
+/// </summary>
 public class GridManager : StaticInstance<GridManager>
 {
     [Header("Grid params")]

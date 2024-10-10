@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// IdolDragAndDrop script is responsible for managing player idols adjustments with collision layer IdolDrop
+/// IdolDragAndDrop class is responsible for drag and drop features while adjusting formation at Night Scene.
 /// </summary>
 public class IdolDragAndDrop : MonoBehaviour
 {
