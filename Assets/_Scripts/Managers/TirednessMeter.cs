@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 /// <summary>
 /// TimerManager class is responsible for timer logic at Night scene.
@@ -12,8 +13,7 @@ public class TirednessMeter : StaticInstance<TirednessMeter>
     //[SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private Slider tirednessSlider;
     [SerializeField] private float remainingTime; // In minutes
-    // public static event Action<bool> FightEnded;
-    // FightEnded?.Invoke();
+    public static event Action FightEnded;
 
     protected override void Awake()
     {
@@ -28,9 +28,10 @@ public class TirednessMeter : StaticInstance<TirednessMeter>
             remainingTime -= Time.deltaTime;
             tirednessSlider.value = remainingTime;
         }
-        else if (remainingTime < 0)
+        else if (remainingTime < 0 && TrackIdolsOnScreen.Instance.idolsOnScreen > 0)
         {
             remainingTime = 0;
+            FightEnded?.Invoke();
             //timerText.color = Color.red;
             Debug.LogWarning("Time is up! idols head back to their studios!");
         }

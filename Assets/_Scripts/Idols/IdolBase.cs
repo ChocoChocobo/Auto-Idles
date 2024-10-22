@@ -21,8 +21,13 @@ public class IdolBase : MonoBehaviour
 
     private AbilityHolder[] abilities;
 
+    private const string PLAYER_IDOL_TAG = "PlayerIdol";
+    private const string ENEMY_IDOL_TAG = "EnemyIdol";
+
     private void Start()
     {
+        TirednessMeter.FightEnded += GoHome;
+
         rb = GetComponent<Rigidbody2D>();
         abilities = GetComponents<AbilityHolder>();
         Debug.Log($"Abilities loaded: {abilities.Length}");
@@ -33,6 +38,8 @@ public class IdolBase : MonoBehaviour
         if (stats.isEnemy) gameObject.tag = "EnemyIdol";
     }
 
+    
+
     private void FixedUpdate()
     {
         HandleStates();
@@ -40,6 +47,7 @@ public class IdolBase : MonoBehaviour
 
     private void HandleStates()
     {
+        Debug.Log(currentState);
         if (BattleInitializer.Instance.battleStarted)
         {
             switch (currentState)
@@ -52,6 +60,9 @@ public class IdolBase : MonoBehaviour
                     break;
                 case IdolState.Attack:
                     AttackTarget();
+                    break;
+                case IdolState.GoHome:
+                    GoHome();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(currentState), currentState, "Ayo watch your state!");
@@ -71,7 +82,7 @@ public class IdolBase : MonoBehaviour
         {
             switch (gameObject.tag)
             {
-                case "EnemyIdol":
+                case ENEMY_IDOL_TAG:
                     foreach (GameObject playerIdol in playerIdols)
                     {
 
@@ -88,7 +99,7 @@ public class IdolBase : MonoBehaviour
                         }
                     }
                     break;
-                case "PlayerIdol":
+                case PLAYER_IDOL_TAG:
                     foreach (GameObject enemyIdol in enemyIdols)
                     {
 
@@ -151,21 +162,34 @@ public class IdolBase : MonoBehaviour
         }// basic attack        
     }
 
-    private void TakeDamage(float damage)
+    private void GoHome()
     {
-        stats.health -= damage;
+        currentState = IdolState.GoHome;
 
-        if (stats.health < 0)
+        if (TrackIdolsOnScreen.Instance.idolsOnScreen == 0)
         {
-            stats.health = 0;
-            IdolDie();
+            TirednessMeter.FightEnded -= GoHome;
+            BattleInitializer.Instance.battleStarted = false;
+            currentState = IdolState.Idle; // Leave it like that just for the sake of them doing nothing kinda
+            Debug.LogError("Loading screen goes to Morning...");
+        }
+
+        switch (gameObject.tag)
+        {
+            case ENEMY_IDOL_TAG:
+                HandleHomeMovement(1);
+                break;
+            case PLAYER_IDOL_TAG:
+                HandleHomeMovement(-1);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(gameObject.tag, gameObject.tag, "Ayo watch your movement!");
         }
     }
 
-    private void IdolDie()
+    private void HandleHomeMovement(float direction)
     {
-        Debug.LogError($"Idol {gameObject.name} died!");
-        Destroy(gameObject);
+        rb.velocity += stats.moveSpeed * new Vector2(direction, 0) * Time.deltaTime;
     }
 
     [Serializable]
@@ -174,5 +198,6 @@ public class IdolBase : MonoBehaviour
         Idle,
         Move,
         Attack,
+        GoHome
     }
 }
